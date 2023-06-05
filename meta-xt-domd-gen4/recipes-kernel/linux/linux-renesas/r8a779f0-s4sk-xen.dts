@@ -1,9 +1,9 @@
-#include "r8a779f0-spider.dts"
+#include "r8a779f0-s4sk.dts"
 #include "xen-chosen.dtsi"
 
 / {
 
-	model = "Renesas Spider CPU and Breakout boards based on r8a779f0, running XEN hypervisor";
+	model = "Renesas S4 Starter Kit board based on r8a779f0, running XEN hypervisor";
 
 	/* Workaround U-Boot issue with memory nodes duplication */
 	/delete-node/ memory@48000000;
@@ -243,15 +243,18 @@
 &gpio1			{ xen,passthrough; };
 &gpio2			{ xen,passthrough; };
 &gpio3			{ xen,passthrough; };
-&i2c0			{ xen,passthrough; };
+&i2c2			{ xen,passthrough; };
 &i2c4			{ xen,passthrough; };
+&i2c5			{ xen,passthrough; };
 &mmc0			{ xen,passthrough; };
 &pciec0			{ xen,passthrough; };
 &scif0			{ xen,passthrough; };
+&scif3			{ xen,passthrough; };
 &hscif1			{ xen,passthrough; };
 &rswitch		{ xen,passthrough; };
 &tsc			{ xen,passthrough; };
-&iccom00		{ xen,passthrough; };
+&mailbox		{ xen,passthrough; };
+&iccom_reg00		{ xen,passthrough; };
 &rtdmac_control0_00     { xen,passthrough; };
 &rtdmac_control0_01     { xen,passthrough; };
 &rtdmac_control0_02     { xen,passthrough; };
@@ -347,6 +350,7 @@
 		iommus = <&ipmmu_hc 7>, <&ipmmu_hc 23>;
 	};
 
+	iccom00		{ xen,passthrough; };
 	iccom01		{ xen,passthrough; };
 	iccom02		{ xen,passthrough; };
 	iccom03		{ xen,passthrough; };
