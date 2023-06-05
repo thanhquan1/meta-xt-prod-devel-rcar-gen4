@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI_append_spider = " \
-    file://early_printk_spider.cfg \
+SRC_URI_append_s4sk = " \
+    file://early_printk_s4sk.cfg \
 "
 
 do_configure_append() {
