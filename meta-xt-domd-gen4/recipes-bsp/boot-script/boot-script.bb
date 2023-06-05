@@ -1,5 +1,5 @@
-SUMMARY = "Boot scripts for S4 Spider board"
-DESCRIPTION = "Set of U-boot scripts that automate boot process on Spider S4"
+SUMMARY = "Boot scripts for S4 Starter Kit board"
+DESCRIPTION = "Set of U-boot scripts that automate boot process on S4SK"
 
 PV = "0.1"
 LICENSE = "MIT"
