@@ -34,7 +34,7 @@ tc filter add dev tsn2 protocol ip parent ffff: u32 match ip src 192.168.3.0/24 
 
 To check if this rule was added you can list all rules on TSN2 ingress qdisc:
 ```
-root@spider:~# tc filter show dev tsn2 ingress
+root@s4sk:~# tc filter show dev tsn2 ingress
 filter parent ffff: protocol ip pref 49152 u32 chain 0
 filter parent ffff: protocol ip pref 49152 u32 chain 0 fh 800: ht divisor 1
 filter parent ffff: protocol ip pref 49152 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 terminal flowid ??? skip_sw in_hw
@@ -52,8 +52,8 @@ tc filter del dev tsn2 ingress pref 49152
 
 Now the list will be empty:
 ```
-root@spider:~# tc filter show dev tsn2 ingress
-root@spider:~#
+root@s4sk:~# tc filter show dev tsn2 ingress
+root@s4sk:~#
 ```
 
 Workflow for all TC filters (u32, flower and matchall) will be the same.

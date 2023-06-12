@@ -13,23 +13,23 @@ NVME namespaces and attach one of them to a secondary controller. But
 first we need to remove default namespace. Be sure to backup any data.
 
 ```
-root@spider-domd:~# nvme delete-ns /dev/nvme0 -n1
+root@s4sk-domd:~# nvme delete-ns /dev/nvme0 -n1
 ```
 
 Now we need to create at least two namespaces. In this example, they will be
 totally identical in sizes (512MB) and features (no special features):
 
 ```
-root@spider-domd:~# nvme create-ns /dev/nvme0 -s 1048576 -c 1048576 -d0 -m0 -f0
+root@s4sk-domd:~# nvme create-ns /dev/nvme0 -s 1048576 -c 1048576 -d0 -m0 -f0
 create-ns: Success, created nsid:1
-root@spider-domd:~# nvme create-ns /dev/nvme0 -s 1048576 -c 1048576 -d0 -m0 -f0
+root@s4sk-domd:~# nvme create-ns /dev/nvme0 -s 1048576 -c 1048576 -d0 -m0 -f0
 create-ns: Success, created nsid:2
 ```
 
 You can list all namespaces:
 
 ```
-root@spider-domd:~# nvme list-ns /dev/nvme0 -a
+root@s4sk-domd:~# nvme list-ns /dev/nvme0 -a
 [   0]:0x1
 [   1]:0x2
 ```
@@ -40,7 +40,7 @@ Next you'll need to attach first namespace to a primary controller
 (that will reside in DomD):
 
 ```
-root@spider-domd:~# nvme attach-ns /dev/nvme0 -n1 -c0x41
+root@s4sk-domd:~# nvme attach-ns /dev/nvme0 -n1 -c0x41
 [   47.419062] nvme nvme0: rescanning namespaces.
 attach-ns: Success, nsid:1
 ```
@@ -50,7 +50,7 @@ At this point you might need to reboot board again.
 And attach second namespace to one of the secondary controllers:
 
 ```
-root@spider-domd:~# nvme attach-ns /dev/nvme0 -n2 -c0x1
+root@s4sk-domd:~# nvme attach-ns /dev/nvme0 -n2 -c0x1
 attach-ns: Success, nsid:2
 ```
 
@@ -72,7 +72,7 @@ configure SSD resources and enable SR-IOV. Execute the following commands:
 After this you can check that secondary NVME controller is online:
 
 ```
-root@spider-domd:~# nvme list-secondary /dev/nvme0 -e1
+root@s4sk-domd:~# nvme list-secondary /dev/nvme0 -e1
 Identify Secondary Controller List:
    NUMID       : Number of Identifiers           : 32
    SCEntry[0  ]:
@@ -98,7 +98,7 @@ back. Wait for the mentioned error message and then issue the
 following command:
 
 ```
-root@spider-domd:~# echo 0000:01:00.2 > /sys/bus/pci/drivers/nvme/bind
+root@s4sk-domd:~# echo 0000:01:00.2 > /sys/bus/pci/drivers/nvme/bind
 
 [ 1165.652567] nvme nvme1: pci function 0000:01:00.2
 [ 1165.737307] nvme nvme1: Shutdown timeout set to 10 seconds
@@ -112,7 +112,7 @@ PCI device pass-through in the next steps.
 `lspci` should display two NVME devices:
 
 ```
-root@spider-domd:~# lspci
+root@s4sk-domd:~# lspci
 00:00.0 PCI bridge: Renesas Technology Corp. Device 0031
 01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd Device a824
 01:00.2 Non-Volatile memory controller: Samsung Electronics Co Ltd Device a824
@@ -145,7 +145,7 @@ accessing /dev/nvme0n1.
 `lspci` should display two Ethernet devices:
 
 ```
-root@spider-domd:~# lspci
+root@s4sk-domd:~# lspci
 00:00.0 PCI bridge: Renesas Technology Corp. Device 0031
 01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)
 01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)
@@ -170,7 +170,7 @@ Execute the following command:
 one virtual function):
 
 ```
-root@spider-domd:~# lspci
+root@s4sk-domd:~# lspci
 00:00.0 PCI bridge: Renesas Technology Corp. Device 0031
 01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)
 01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)
