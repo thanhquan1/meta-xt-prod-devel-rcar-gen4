@@ -33,7 +33,7 @@ common_data:
       rev: 1f6981217e97356acee16370b660eed2be722553
     - type: git
       url: "git@rcar-env.dgn.renesas.com:xen/meta-xt-prod-devel-rcar-gen4.git"
-      rev: spider-1.1.0-dev-for-build_test
+      rev: spider-1.1.0-dev
 
   # Sources to be used in DomD and DomU
   domd_domu_sources: &DOMD_DOMU_SOURCES
