@@ -21,7 +21,7 @@ common_data:
   sources: &COMMON_SOURCES
     - type: git
       url: "git://git.yoctoproject.org/poky"
-      rev: 74b22db68
+      rev: 232b5533d
     - type: git
       url: "git://git.openembedded.org/meta-openembedded"
       rev: 814eec96c
