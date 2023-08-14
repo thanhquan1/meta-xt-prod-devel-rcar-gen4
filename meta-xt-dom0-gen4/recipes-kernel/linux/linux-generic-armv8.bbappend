@@ -1,10 +1,10 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-BRANCH = "v5.10.41/rcar-5.1.7.rc11"
+BRANCH = "dev_2.5Gbps.rc1"
 SRCREV = "${AUTOREV}"
 LINUX_VERSION = "5.10.41"
 
 SRC_URI = "\
-    git://github.com/renesas-rcar/linux-bsp.git;branch=${BRANCH};protocol=https \
+    git@rcar-env.dgn.renesas.com:linuxbsp_yocto/linux-bsp.git;branch=${BRANCH} \
     file://defconfig \
 "

@@ -1,5 +1,5 @@
-RENESAS_BSP_URL = "git://github.com/renesas-rcar/linux-bsp.git"
+RENESAS_BSP_URL = "git@github.com:thanhquan1/linux-xen.git"
 
-BRANCH = "v5.10.41/rcar-5.1.7.rc11"
+BRANCH = "dev_2.5Gbps.rc1"
 SRCREV = "${AUTOREV}"
 LINUX_VERSION = "5.10.41"
